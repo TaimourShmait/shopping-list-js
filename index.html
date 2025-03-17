@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping List</title>
     <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="main-container">
 
-        <h2>Shopping List</h2>
-        <p>Add items to your list</p>
+        <h2 id="main-title">Shopping List</h2>
+        <p id="main-paragraph">Add items to your list</p>
 
         <div id="main-input-container">
-            <input type="text" placeholder="Enter an item" id="user-input">
-            <button id="add-item-button">+ Add Item</button>
+            <input type="text" placeholder="Enter an item" id="user-input" class="main-inputs">
+            <button id="add-item-button" class="main-inputs">+ Add</button>
+            <button id="clear-items-button" class="main-inputs">Clear</button>
         </div>
 
         <div id="list-container">

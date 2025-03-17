@@ -2,13 +2,21 @@ body {
     background-color: #EEEEEE;
 }
 
+#main-title {
+    margin: 0;
+}
+
+#main-paragraph {
+    font-size: 1.1rem;
+}
+
 #main-container {
     width: 50vw;
     height: 100vh;
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1%;
 
     margin: 0 auto;
 
@@ -18,32 +26,95 @@ body {
 }
 
 #main-input-container {
+    /* border: 1px solid black; */
     display: inline-block;
     width: 100%;
 }
 
 #user-input {
-    width: 80%;
+    width: 58%;
+    padding: 0 0 0 0.5rem;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
-#add-item-button {
-    width: 10%;
+#add-item-button, #clear-items-button {
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+    height: 2rem;
+    font-size: 1rem;
+    display: inline-block;
 }
 
-
-
-#list-container {
+#main-input-container {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    /* background-color: rgb(211, 211, 211); */
+    justify-content: space-between;
+    align-items: center;
+    gap: 2%;
+}
+
+/* #add-item-button, #clear-items-button {
+    width: 10%;
+    cursor: pointer;
+    text-align: center;
+} */
+
+/* #clear-items-button {
+    margin-right: 0;
+} */
+
+button {
+    padding: 0;
 }
 
 .item-container {
+    position: relative;
+}
+
+#remove-item-button {
+    position: absolute;
+    right: 0;
+    width: 20%;
+}
+
+.main-inputs {
+    height: 2rem;
+    font-size: 1rem;
+}
+
+#remove-item-button {
+    margin-right: 0;
+    width: 19.5%;
+    height: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+#list-container {
+    /* border: 1px solid black; */
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* background-color: rgb(248, 248, 248);  */
+    overflow-y: auto;
+}
+
+.item-container {
+    border: 1px solid rgb(227, 227, 227);
+    border-left: none;
+    border-right: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
     
-    background-color: rgb(231, 231, 231);
+    /* background-color: rgb(231, 231, 231); */
+}
+
+body, button, input {
+    font-family: "Nunito Sans", sans-serif;
 }
