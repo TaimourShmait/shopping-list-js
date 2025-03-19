@@ -26,6 +26,7 @@ function addItem () {
         
     let item = document.createElement("p");
     item.textContent = userInput;
+    item.classList.add("items");
     
     let editItemButton = document.createElement("button");
     editItemButton.id = "edit-item-button";
@@ -36,12 +37,16 @@ function addItem () {
     removeItemButton.textContent = "Remove";
 
     itemDiv.appendChild(item);
-    itemDiv.appendChild(editItemButton);
+    // itemDiv.appendChild(editItemButton);
     itemDiv.appendChild(removeItemButton);
     
     listContainer.appendChild(itemDiv);
 
-    editItemButton.addEventListener("click", () => editItem(item, editItemButton));
+    // editItemButton.addEventListener("click", () => editItem(item, editItemButton));
+
+    item.addEventListener("dblclick", () => {
+        editItem(item);
+    });
 
     removeItemButton.addEventListener("click", () => {
         itemDiv.remove();
@@ -59,38 +64,47 @@ function clearItems() {
     
 }
 
-function editItem(item, editItemButton) {
+function editItem(item) {
     
-    editItemButton.remove();
+    let idleTime;
 
     let editItemField = document.createElement("input");
     editItemField.setAttribute("type", "text");
-    editItemField.setAttribute("placeholder", `Edit ${item.textContent}`);
+    editItemField.setAttribute("placeholder", `Edit "${item.textContent}"`);
     editItemField.id = "edit-item-field";
 
-    let confirmButton = document.createElement("button");
-    confirmButton.id = "confirm-button";
-    confirmButton.textContent = "Confirm";
+    editItemField.style.cssText = "margin: 1rem 0; font-size: 1rem; padding: 0; border: none;";
 
-    // editItemField.style.fontSize = "1rem";
-    // editItemField.style.margin = "0.5em";
-    // editItemField.style.marginLeft = "-0.2em";
+    item.style.display = "none";
+    item.parentNode.insertBefore(editItemField, item);
 
-    editItemField.style.cssText = "margin: 0.95rem 0 0.95rem 0rem ; font-size: 1rem; border: 0px solid; padding: 0.5px;";
-    item.parentNode.replaceChild(editItemField, item);
-
-    // editItemField.addEventListener("keydown", addEditedItem);
-    // editItemField.addEventListener("click", addEditedItem);
-
-    if ((editItemField.value).trim() == "") 
-        return;
-
+    idleTime = setTimeout(() => { restoreItem(item, editItemField); }, 5000);
 
     editItemField.addEventListener("keydown", function(e) {
-        if (e.key === "Enter") {
-            item.value = editItemField.value;
-            editItemField.parentNode.replaceChild(item, editItemField);
+
+        clearTimeout(idleTime);
+
+        if (e.key === "Enter") {     
+
+            if ((editItemField.value).trim() == "") {
+                return; 
+            }
+        
+            item.textContent = editItemField.value;
+            item.style.display = "block";   
+            editItemField.remove();
+
+            clearTimeout(idleTime);
+
         }
+
     });
 
+    // editItemField.focus();
+
+}
+
+function restoreItem(item, editItemField) {
+    item.style.display = "block";
+    editItemField.remove();
 }
