@@ -1,4 +1,7 @@
-## Live Demo
+# Shopping List JS
 
-You can view the live version of the project at:<br>
-[Shopping List Live Demo](https://taimourshmait.github.io/shopping-list-js-dom/)
+A simple shopping list using basic JavaScript and DOM manipulation to add, remove, and manage items.
+
+## Installation
+1. Clone this repository: `git clone https://github.com/TaimourShmait/shopping-list-js.git`
+2. Open the `index.html` file in your browser.
